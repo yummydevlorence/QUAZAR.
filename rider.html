@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06100b">
+  <title>Rider | Quazar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/rider.css?v=rider-pickup-route-fix">
+</head>
+<body>
+  <div class="road" aria-hidden="true"><span class="road-line"></span></div>
+  <div class="scenery" aria-hidden="true">
+    <svg viewBox="0 0 520 120" focusable="false">
+      <g transform="scale(1 2.7273)">
+      <path d="M0 41Q85 32 158 40T318 39T520 40V44H0Z" fill="#28543a" opacity=".58"/>
+      <path d="M77 40Q82 26 79 13" fill="none" stroke="#9b6944" stroke-width="3" stroke-linecap="round"/>
+      <path d="M79 14Q59 3 48 8Q64 8 77 17Q57 14 51 20Q68 17 79 21Q65 26 65 31Q75 24 82 22Q91 31 101 31Q94 23 85 19Q103 21 112 15Q96 11 84 15Q99 7 96 2Q85 5 79 14Z" fill="#5f9b54" stroke="#8fbd68" stroke-width="1" stroke-linejoin="round"/>
+      <path d="M431 40V23" stroke="#8b6445" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="425" cy="17" r="12" fill="#477e4b"/><circle cx="438" cy="20" r="11" fill="#5d9952"/><circle cx="418" cy="24" r="9" fill="#6aa75a"/>
+      <path d="m108 22 30-12 30 12-7-1-23-7-23 7Z" fill="#6d9d78" stroke="#b3d18d" stroke-width="1.2"/>
+      <path d="M115 22H161V37H115Z" fill="#b99a68" stroke="#dcc58e" stroke-width="1"/>
+      <path d="M119 27H157M119 31H157M121 37V42M155 37V42M113 42H163" stroke="#dcc58e" stroke-width="1.2"/>
+      <path d="M133 37V29H143V37" fill="#604d3d" stroke="#dcc58e" stroke-width=".8"/>
+      <path d="m330 21 31-14 31 14-8-2-23-8-23 8Z" fill="#b9694e" stroke="#e9a47a" stroke-width="1.2"/>
+      <path d="M337 21H385V37H337Z" fill="#d5b77c" stroke="#efd9a3" stroke-width="1"/>
+      <path d="M341 26H381M341 31H381M343 37V42M379 37V42M335 42H387" stroke="#efd9a3" stroke-width="1.2"/>
+      <path d="M357 37V29H367V37" fill="#70513d" stroke="#efd9a3" stroke-width=".8"/>
+      <path d="M164 20 244 1 324 20 307 18 244 9 181 18Z" fill="#bc7847" stroke="#e7af69" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="m178 17 66-15 66 15M198 14l46-11 46 11" fill="none" stroke="#efc17d" stroke-width="1" opacity=".9"/>
+      <path d="M190 20H298V33H190Z" fill="#b8794f" stroke="#e5b27b" stroke-width="1.5"/>
+      <path d="M194 25H294M194 29H294M207 33V42M281 33V42M188 42H301" stroke="#e5b27b" stroke-width="1.5"/>
+      <path d="M235 33V25H253V33" fill="#684e3d" stroke="#e5b27b" stroke-width="1"/>
+      <rect x="198" y="22" width="11" height="8" fill="#79b9bd" stroke="#f1d092" stroke-width="1"/>
+      <path d="M203.5 22V30M198 26H209" stroke="#f1d092" stroke-width=".8"/>
+      <rect x="279" y="22" width="11" height="8" fill="#79b9bd" stroke="#f1d092" stroke-width="1"/>
+      <path d="M284.5 22V30M279 26H290" stroke="#f1d092" stroke-width=".8"/>
+      </g>
+    </svg>
+  </div>
+  <div class="road-car road-car-upper" aria-hidden="true">
+    <svg viewBox="0 0 70 48" focusable="false">
+      <path d="M6 30h5l5-9h26l9 9h6a3 3 0 0 1 3 3v4H3v-4a3 3 0 0 1 3-3Z" fill="#76cde0" stroke="#d5e5db" stroke-width="1.5"/>
+      <path d="m19 23-4 7h13v-7Zm12 0v7h13l-7-7Z" fill="#29444a"/>
+      <circle cx="13" cy="37" r="4" fill="#18201b" stroke="#ffc36a" stroke-width="1.5"/><circle cx="49" cy="37" r="4" fill="#18201b" stroke="#ffc36a" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="road-car road-car-lower" aria-hidden="true">
+    <svg viewBox="0 0 70 48" focusable="false">
+      <path d="M6 30h5l5-9h26l9 9h6a3 3 0 0 1 3 3v4H3v-4a3 3 0 0 1 3-3Z" fill="#ff977f" stroke="#f2d3bd" stroke-width="1.5"/>
+      <path d="m19 23-4 7h13v-7Zm12 0v7h13l-7-7Z" fill="#503d3c"/>
+      <circle cx="13" cy="37" r="4" fill="#18201b" stroke="#ffc36a" stroke-width="1.5"/><circle cx="49" cy="37" r="4" fill="#18201b" stroke="#ffc36a" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="road-car road-car-upper-two" aria-hidden="true">
+    <svg viewBox="0 0 70 48" focusable="false">
+      <path d="M6 30h5l5-9h26l9 9h6a3 3 0 0 1 3 3v4H3v-4a3 3 0 0 1 3-3Z" fill="#ffc36a" stroke="#f2d3bd" stroke-width="1.5"/>
+      <path d="m19 23-4 7h13v-7Zm12 0v7h13l-7-7Z" fill="#4b4333"/>
+      <circle cx="13" cy="37" r="4" fill="#18201b" stroke="#d8e5d2" stroke-width="1.5"/><circle cx="49" cy="37" r="4" fill="#18201b" stroke="#d8e5d2" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="road-car road-car-lower-two" aria-hidden="true">
+    <svg viewBox="0 0 70 48" focusable="false">
+      <path d="M6 30h5l5-9h26l9 9h6a3 3 0 0 1 3 3v4H3v-4a3 3 0 0 1 3-3Z" fill="#c493df" stroke="#ead9f2" stroke-width="1.5"/>
+      <path d="m19 23-4 7h13v-7Zm12 0v7h13l-7-7Z" fill="#44374c"/>
+      <circle cx="13" cy="37" r="4" fill="#18201b" stroke="#d8e5d2" stroke-width="1.5"/><circle cx="49" cy="37" r="4" fill="#18201b" stroke="#d8e5d2" stroke-width="1.5"/>
+    </svg>
+  </div>
+  <div class="courier" aria-hidden="true">
+    <svg viewBox="0 0 84 48" focusable="false">
+      <ellipse cx="42" cy="42" rx="31" ry="3" fill="#000" opacity=".28"/>
+      <circle cx="19" cy="35" r="8" fill="#152019" stroke="#d8e5d2" stroke-width="2"/>
+      <circle cx="63" cy="35" r="8" fill="#152019" stroke="#d8e5d2" stroke-width="2"/>
+      <circle cx="19" cy="35" r="2" fill="#ffc36a"/>
+      <circle cx="63" cy="35" r="2" fill="#ffc36a"/>
+      <path d="M19 35h18l10-14 16 14H42L31 21h-8" fill="none" stroke="#a8df57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m48 21 8-2 5 4M55 19l3-5" fill="none" stroke="#d8e5d2" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="m38 16-8 7 10 5 7-9 8 1" fill="none" stroke="#ff977f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m39 26-7 7m8-5 8 7" fill="none" stroke="#d8e5d2" stroke-width="3" stroke-linecap="round"/>
+      <rect x="24" y="16" width="10" height="12" rx="2" fill="#76cde0" stroke="#d8e5d2" stroke-width="1.5"/>
+      <path d="m35 14 5-6 7 2-1 7-6 3" fill="#ff977f" stroke="#d8e5d2" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="m38 9 2-4 7 1 2 4" fill="#ffc36a" stroke="#d8e5d2" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <div class="app" id="app" hidden>
+    <header class="bar">
+      <div class="brand"><span class="mark">Q</span><div><strong>Quazar Rider</strong><small id="rider-name">Rider</small></div></div>
+      <div class="bar-right">
+        <button class="icon-btn" id="refresh" type="button" aria-label="Refresh" title="Refresh"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></button>
+        <button class="icon-btn" id="logout" type="button" aria-label="Log out" title="Log out"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg></button>
+      </div>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Deliveries">
+      <button class="tab active" type="button" data-tab="todo">To pick up <b id="c-todo">0</b></button>
+      <button class="tab" type="button" data-tab="ontheway">On the way <b id="c-ontheway">0</b></button>
+      <button class="tab" type="button" data-tab="done">Delivered <b id="c-done">0</b></button>
+    </nav>
+
+    <p class="notice" id="notice" role="status" hidden></p>
+    <main class="list" id="list"></main>
+  </div>
+
+  <div class="modal logout-modal" id="logout-modal" hidden>
+    <section class="sheet logout-sheet" role="alertdialog" aria-modal="true" aria-labelledby="logout-title" aria-describedby="logout-message" tabindex="-1">
+      <p class="eyebrow">Rider account</p>
+      <h2 id="logout-title">Are you sure you want to log out?</h2>
+      <p class="hint" id="logout-message"></p>
+      <div class="logout-actions">
+        <button class="btn ghost" id="logout-cancel" type="button">Stay signed in</button>
+        <button class="btn danger" id="logout-confirm" type="button">Log out</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- proof of delivery -->
+  <div class="modal" id="proof-modal" hidden>
+    <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="proof-title">
+      <div class="sheet-head"><div><p class="eyebrow">Proof of delivery</p><h2 id="proof-title">Order</h2></div><button class="icon-btn" id="proof-close" type="button" aria-label="Close">×</button></div>
+      <p class="hint">Take a clear photo of the item handed to the customer (or the item at their door).</p>
+      <label class="camera-btn" for="proof-input"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> <span id="camera-label">Open camera</span></label>
+      <input id="proof-input" type="file" accept="image/*" capture="environment" hidden>
+      <img id="proof-preview" alt="Photo preview" hidden>
+      <label class="check" id="cod-wrap" hidden><input id="cod-collected" type="checkbox"> <span>I collected <b id="cod-amount"></b> cash from the customer</span></label>
+      <p class="error" id="proof-error" role="alert"></p>
+      <div class="sheet-actions">
+        <button class="btn ghost" id="proof-cancel" type="button">Cancel</button>
+        <button class="btn" id="proof-submit" type="button" disabled>Confirm delivered</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="gate" id="gate" hidden>
+    <div class="mark big">Q</div><h1 id="gate-title">Rider access required</h1><p id="gate-message">Sign in with a rider account to continue.</p>
+    <a class="btn" href="/#account">Go to sign in</a>
+  </div>
+  <script src="/rider.js?v=rider-pickup-route-fix" defer></script>
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuazarTech</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css?v=orders-riders-v2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- ===== WELCOME SCREEN (plays after login / sign up) ===== -->
+  <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-label="Welcome to Quazar">
+    <span class="w-ring"></span><span class="w-ring r2"></span>
+    <div class="w-inner">
+      <p class="w-small">Welcome to</p>
+      <div class="w-title" role="img" aria-label="Quazar">
+        <span style="--i:0">Q</span><span style="--i:1">U</span><span style="--i:2">A</span><span style="--i:3">Z</span><span style="--i:4">A</span><span style="--i:5">R</span>
+      </div>
+      <p class="w-name" id="welcomeName"></p>
+      <p class="w-sub">Tech that fits your life.</p>
+      <div class="w-actions">
+        <button class="w-skip" id="welcomeSkip">Skip</button>
+      </div>
+    </div>
+    <audio id="welcomeAudio" src="welcome.mp3" preload="auto"></audio>
+  </div>
+<!-------- topic bar -------->
+<div class="topic-bar">
+  <span>📈 E-commerce powered by <b>demand forecasting</b></span>
+  <span class="topic-sub">Know what's trending before it sells out</span>
+</div>
+
+<header class="hero">
+  <nav class="topbar">
+    <img src="images/quazar-wordmark.png" alt="QuazarTech logo" width="125" class="logo-img">
+    <ul class="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#" data-info="about">About</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#" data-info="contact">Contact</a></li>
+      <li id="account-nav" hidden><a href="#account">Account</a></li>
+      <li id="my-orders-nav" hidden>
+        <a href="#account/orders">My Orders <span class="nav-order-count" id="nav-order-count" hidden>0</span></a>
+      </li>
+    </ul>
+    <div class="actions">
+      <a href="#" id="account-link">Login</a>
+      <button class="cart-trigger" id="cart-open" type="button" aria-label="Open cart, 0 items" title="Open cart">
+        <img src="images/cart.png" alt="" width="32" class="cart-img">
+        <span class="cart-count" id="cart-count" hidden>0</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="promo">20% off <span>QUAZAR20</span> Through Oct. 31</div>
+
+  <div class="hero-grid">
+    <div class="hero-left">
+      <small class="eyebrow">E-commerce with demand forecasting</small>
+      <h1>Smart gadgets.<br>Elevated living</h1>
+      <p>Smarter gadgets.<br> Easier living.</p>
+      <a href="#products" class="play">
+        <span class="circle">&#8594;</span>
+        <span>Explore now<small>Shop the collection</small></span>
+      </a>
+    </div>
+
+    <div class="hero-center">
+      <div class="hero-art">
+        <img src="images/quazar-logo.png" alt="QuazarTech logo">
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <h2>Technology that keeps you one step ahead.</h2>
+      <small>Discover the tech.<br> Elevate your everyday.</small>
+    </div>
+  </div>
+
+</header>
+<div id="store-view">
+<p class="store-notice" id="store-notice" role="status" hidden></p>
+<!-------- category strip (swipe or click) -------->
+<nav class="cat-strip" aria-label="Shop categories">
+  <div class="strip-track" id="cat-strip">
+    <button class="tab active" data-filter="all">All Products</button>
+    <button class="tab" data-filter="phones">Phones</button>
+    <button class="tab" data-filter="laptops">Laptops</button>
+    <button class="tab" data-filter="earbuds">Earbuds</button>
+    <button class="tab" data-filter="speakers">Speakers</button>
+    <button class="tab" data-filter="keyboards">Keyboards</button>
+    <button class="tab" data-filter="trends">New Arrivals</button>
+    <button class="tab" data-filter="forecast">🔥 High Demand</button>
+  </div>
+</nav>
+<!-------- product catalog -------->
+<main class="store" id="store">
+<!-------- products -------->
+<section class="products container" id="products">
+  <h2 class="section-title">All Products</h2>
+
+  <div class="product-grid" id="store-grid">
+
+    <!-- Cards are filled in by script.js from /api/products -->
+  </div>
+
+</section>
+</main>
+</div><!-- end store-view -->
+
+<!-------- account page -------->
+<main class="acc-page" id="account-page" hidden>
+  <section id="acc-view-menu">
+    <div class="acc-profile">
+      <div class="acc-avatar" id="acc-avatar" aria-hidden="true"></div>
+      <div class="acc-who">
+        <strong id="acc-name"></strong>
+        <span id="acc-email"></span>
+        <span class="acc-role-tag" id="acc-role" hidden>Administrator</span>
+      </div>
+    </div>
+    <div class="acc-card">
+      <a class="acc-card-head" href="#account/orders">
+        <span>My Orders</span><span class="muted">View all &rsaquo;</span>
+      </a>
+      <div class="acc-status" aria-label="Order progress">
+        <a href="#account/orders/to-pay" aria-label="View orders to pay"><b id="acc-count-to-pay">-</b><span>To pay</span></a>
+        <a href="#account/orders/to-ship" aria-label="View orders to ship"><b id="acc-count-to-ship">-</b><span>To ship</span></a>
+        <a href="#account/orders/to-receive" aria-label="View orders to receive"><b id="acc-count-to-receive">-</b><span>To receive</span></a>
+        <a href="#account/orders/to-review" aria-label="View orders to review"><b id="acc-count-to-review">-</b><span>To review</span></a>
+      </div>
+    </div>
+    <nav class="acc-list" aria-label="Account menu">
+      <a class="acc-row" href="#account/vouchers"><span class="ic">🎟️</span><span class="label">My Vouchers</span><span class="chev">&rsaquo;</span></a>
+      <a class="acc-row" href="#account/settings"><span class="ic">⚙️</span><span class="label">Account Settings</span><span class="chev">&rsaquo;</span></a>
+      <a class="acc-row" href="mailto:support@quazartech.com"><span class="ic">💬</span><span class="label">Contact Support</span><span class="chev">&rsaquo;</span></a>
+    </nav>
+    <button type="button" class="btn-small danger acc-logout" id="acc-logout">Log out</button>
+  </section>
+  <section id="acc-view-orders" hidden>
+    <div class="acc-sub-head"><a class="acc-back" href="#account" aria-label="Back to account">&lsaquo;</a><h2>My Orders</h2></div>
+    <div class="chips" id="acc-order-chips"></div>
+    <div id="acc-order-list"></div>
+  </section>
+  <section id="acc-view-vouchers" hidden>
+    <div class="acc-sub-head"><a class="acc-back" href="#account" aria-label="Back to account">&lsaquo;</a><h2>My Vouchers</h2></div>
+    <div class="acc-voucher">
+      <div class="acc-v-left"><b>20%</b><span>off</span></div>
+      <div class="acc-v-right">
+        <code>QUAZAR20</code>
+        <p>20% off your order. Valid through Oct. 31.</p>
+        <small class="acc-v-expiry" id="acc-voucher-expiry"></small>
+        <span class="badge pending" id="acc-voucher-status" role="status">Checking...</span>
+        <div class="acc-v-actions">
+          <button type="button" class="btn-small" id="acc-copy">Copy code</button>
+          <a class="btn-small ghost" href="#products">Shop now</a>
+        </div>
+      </div>
+    </div>
+    <p class="hint" id="acc-message" role="status"></p>
+    <p class="hint">To use it, open your cart, type the code in the promo box and tap Apply.</p>
+  </section>
+  <section id="acc-view-settings" hidden>
+    <div class="acc-sub-head"><a class="acc-back" href="#account" aria-label="Back to account">&lsaquo;</a><h2>Account Settings</h2></div>
+
+    <form class="set-card" id="set-name-form" novalidate>
+      <h3>Customer name</h3>
+      <label>First name<input id="set-first-name" maxlength="40" autocomplete="given-name" required></label>
+      <label>Middle name (optional)<input id="set-middle-name" maxlength="40" autocomplete="additional-name"></label>
+      <label>Last name<input id="set-last-name" maxlength="40" autocomplete="family-name" required></label>
+      <label>Suffix (optional)<input id="set-suffix" maxlength="10" placeholder="Jr., Sr., III"></label>
+      <p class="set-note">Use your full name so it appears correctly on orders and delivery records.</p>
+      <p class="set-msg" id="set-name-msg" role="status"></p>
+      <button class="btn-small" type="submit">Save name</button>
+    </form>
+
+    <form class="set-card" id="set-profile-form" novalidate>
+      <h3>Profile</h3>
+      <label>Username<input id="set-username" minlength="3" maxlength="20" autocomplete="username" required></label>
+      <label>Mobile number<input id="set-phone" type="tel" placeholder="09171234567" autocomplete="tel"></label>
+      <label>Gmail<input id="set-email" disabled></label>
+      <p class="set-note">To change your Gmail, contact <a class="acc-link" href="mailto:support@quazartech.com">support@quazartech.com</a>.</p>
+      <p class="set-msg" id="set-profile-msg" role="status"></p>
+      <button class="btn-small" type="submit">Save changes</button>
+    </form>
+
+    <form class="set-card" id="set-password-form" novalidate>
+      <h3>Change password</h3>
+      <label>Current password<input id="set-pw-current" type="password" autocomplete="current-password" required></label>
+      <label>New password<input id="set-pw-new" type="password" minlength="8" autocomplete="new-password" required></label>
+      <label>Confirm new password<input id="set-pw-confirm" type="password" minlength="8" autocomplete="new-password" required></label>
+      <p class="set-msg" id="set-password-msg" role="status"></p>
+      <button class="btn-small" type="submit">Update password</button>
+    </form>
+
+    <section class="set-card" id="set-addresses">
+      <div class="set-head"><h3>Saved addresses</h3><button type="button" class="btn-small ghost" id="addr-add">+ Add address</button></div>
+      <div id="addr-list"></div>
+      <form id="addr-form" hidden novalidate>
+        <input type="hidden" id="addr-id">
+        <label>Label
+          <select id="addr-label"><option>Home</option><option>Work</option><option>Other</option></select>
+        </label>
+        <label>Receiver name<input id="addr-name" maxlength="80" autocomplete="name" required></label>
+        <label>Mobile number<input id="addr-phone" type="tel" placeholder="09171234567" autocomplete="tel" required></label>
+        <div class="addr-fields" id="addr-fields"></div>
+        <label class="set-check"><input type="checkbox" id="addr-default"> Set as default address</label>
+        <p class="set-msg" id="addr-msg" role="status"></p>
+        <div class="set-actions">
+          <button class="btn-small" type="submit">Save address</button>
+          <button class="btn-small ghost" type="button" id="addr-cancel">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="set-card" id="set-notifications">
+      <h3>Notifications</h3>
+      <label class="set-toggle"><span><b>Order updates</b><small>Approved, shipped and declined orders</small></span><input type="checkbox" data-pref="order_updates"></label>
+      <label class="set-toggle"><span><b>Promos and vouchers</b><small>New codes like QUAZAR20</small></span><input type="checkbox" data-pref="promos"></label>
+      <label class="set-toggle"><span><b>Price drops</b><small>When products you viewed get cheaper</small></span><input type="checkbox" data-pref="price_drops"></label>
+      <label class="set-toggle"><span><b>Back in stock</b><small>When an out-of-stock item returns</small></span><input type="checkbox" data-pref="back_in_stock"></label>
+      <label class="set-toggle"><span><b>Trending items</b><small>High Demand picks from our forecasting</small></span><input type="checkbox" data-pref="trending"></label>
+      <p class="set-msg" id="set-pref-msg" role="status"></p>
+    </section>
+
+    <form class="set-card danger" id="set-delete-form" novalidate>
+      <h3>Delete account</h3>
+      <p class="set-note">This permanently removes your account, saved addresses and cart. Your past orders are kept for our records. This cannot be undone.</p>
+      <label>Enter your password to confirm<input id="set-delete-password" type="password" autocomplete="current-password" required></label>
+      <p class="set-msg" id="set-delete-msg" role="status"></p>
+      <button class="btn-small danger" type="submit">Delete my account</button>
+    </form>
+  </section>
+</main>
+
+<!-------- login modal -------->
+<div class="modal" id="login-modal" aria-hidden="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+    <h3 id="modal-title">Welcome back</h3>
+    <form id="login-form">
+      <div id="credentialsFields">
+        <div class="role-pick" id="rolePick" role="group" aria-label="Sign up as" hidden>
+          <button type="button" class="role-opt active" data-role="customer">
+            <img class="role-icon" src="images/customer-cart-icon.png" alt="">
+            Customer
+          </button>
+          <button type="button" class="role-opt" data-role="rider">
+            <img class="role-icon" src="images/rider-motorcycle-icon.png" alt="">
+            Rider
+          </button>
+        </div>
+        <label class="auth-name" id="nameField" hidden>
+          <span>Username</span>
+          <input type="text" id="authName" placeholder="3-20 letters, numbers or underscores" autocomplete="username" minlength="3" maxlength="20">
+        </label>
+        <div class="real-name" id="realNameFields" hidden>
+          <input type="text" id="authFirst" placeholder="First name" maxlength="50" autocomplete="given-name">
+          <input type="text" id="authMiddle" placeholder="Middle name (optional)" maxlength="50" autocomplete="additional-name">
+          <input type="text" id="authLast" placeholder="Last name" maxlength="50" autocomplete="family-name">
+          <input type="text" id="authSuffix" placeholder="Suffix (optional, e.g. Jr.)" maxlength="10" autocomplete="honorific-suffix">
+        </div>
+        <label id="phoneField" hidden>
+          <span id="phoneLabel">Mobile number</span>
+          <input type="tel" id="authPhone" placeholder="09171234567" autocomplete="tel">
+        </label>
+        <input type="text" id="email" placeholder="Gmail or username" autocomplete="username" required>
+        <input type="password" id="password" placeholder="Password" autocomplete="current-password" required>
+        <ul id="pwRules" class="pw-rules" hidden>
+          <li data-rule="len">At least 10 characters</li>
+          <li data-rule="lower">Lowercase letter</li>
+          <li data-rule="upper">Uppercase letter</li>
+          <li data-rule="num">Number</li>
+          <li data-rule="sym">Symbol (! @ # $ ...)</li>
+        </ul>
+        <div class="rider-fields" id="riderFields" hidden>
+          <p class="rider-note">Apply to deliver for Quazar. Our team will review your application before you can take orders.</p>
+          <label>Vehicle
+            <select id="riderVehicle">
+              <option value="motorcycle">Motorcycle</option>
+              <option value="bicycle">Bicycle</option>
+              <option value="car">Car</option>
+              <option value="van">Van</option>
+            </select>
+          </label>
+          <label>Plate number <small>(leave blank for bicycle)</small>
+            <input type="text" id="riderPlate" placeholder="ABC 1234" maxlength="12" autocomplete="off">
+          </label>
+        </div>
+        <label class="agree" id="agreeField" hidden>
+          <input type="checkbox" id="authAgree">
+          <span>I agree to the <a href="#" data-info="terms">Terms of Service</a> and <a href="#" data-info="privacy">Privacy Policy</a>.</span>
+        </label>
+      </div>
+      <div id="otpField" hidden>
+        <p id="otpHelp">Enter the 6-digit verification code sent to your email.</p>
+        <input type="text" id="otpCode" placeholder="6-digit code" inputmode="numeric" autocomplete="one-time-code" maxlength="6">
+        <button type="button" class="resend-otp" id="resend-otp">Request a new code</button>
+      </div>
+      <p class="form-error" id="authError" role="alert"></p>
+      <button type="submit" class="btn" id="submit-btn">Log in</button>
+    </form>
+    <p class="auth-switch" id="auth-switch"><span id="switch-text">No account yet?</span> <a href="#" id="switch-link">Sign up</a></p>
+  </div>
+</div>
+
+<!-------- info modal (used by footer + nav links) -------->
+<div class="modal" id="info-modal" aria-hidden="true">
+  <div class="modal-box info-box">
+    <button class="modal-close" id="info-close" aria-label="Close">&times;</button>
+    <h3 id="info-title"></h3>
+    <div id="info-body"></div>
+  </div>
+</div>
+
+<!-------- logout confirmation -------->
+<div class="modal logout-modal" id="logout-modal" aria-hidden="true">
+  <div class="modal-box logout-box" role="alertdialog" aria-modal="true" aria-labelledby="logout-title" aria-describedby="logout-message">
+    <div class="logout-icon" aria-hidden="true">↪</div>
+    <h3 id="logout-title">Are you sure?</h3>
+    <p id="logout-message"></p>
+    <div class="logout-actions">
+      <button type="button" class="btn-ghost" id="logout-cancel">Stay logged in</button>
+      <button type="button" class="btn-danger" id="logout-confirm">Yes, log out</button>
+    </div>
+  </div>
+</div>
+
+<!-------- cart and checkout -------->
+<div class="cart-modal" id="cart-modal" aria-hidden="true">
+  <button class="cart-backdrop" type="button" data-cart-close aria-label="Close cart"></button>
+  <section class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <header class="cart-header">
+      <div><p class="cart-eyebrow">QUAZAR STORE</p><h2 id="cart-title">Your Cart <span id="cart-heading-count"></span></h2></div>
+      <button class="cart-close" type="button" data-cart-close aria-label="Close cart">&times;</button>
+    </header>
+    <div class="cart-view" id="cart-items-view">
+      <div class="cart-lines" id="cart-lines"></div>
+      <form class="cart-promo" id="promo-form">
+        <label for="promo-code">Promo code</label>
+        <div><input id="promo-code" maxlength="40" placeholder="Enter code"><button type="submit">Apply</button></div>
+        <small id="promo-message" role="status"></small>
+      </form>
+      <div class="cart-summary">
+        <div><span>Subtotal</span><b id="cart-subtotal">₱0.00</b></div>
+        <div id="cart-discount-row" hidden><span>Discount</span><b id="cart-discount">−₱0.00</b></div>
+        <div class="cart-total"><span>Total</span><b id="cart-total">₱0.00</b></div>
+      </div>
+      <p class="cart-error" id="cart-error" role="alert"></p>
+      <button class="cart-checkout" id="cart-checkout" type="button">Continue to checkout</button>
+      <a class="cart-continue" href="#products" data-cart-close>Continue shopping</a>
+    </div>
+    <form class="checkout-view" id="checkout-form" hidden novalidate>
+      <button class="checkout-back" id="checkout-back" type="button">← Back to cart</button>
+      <h3>Delivery details</h3>
+      <label id="co-saved-wrap" hidden>Saved addresses<select id="co-saved"></select></label>
+      <label>Receiver name<input id="shipping-name" name="shipping_name" required minlength="2" maxlength="80" autocomplete="name"></label>
+      <label>Mobile number<input id="shipping-phone" name="shipping_phone" type="tel" required autocomplete="tel" placeholder="09171234567"></label>
+      <div class="addr-fields" id="co-addr-fields"></div>
+      <fieldset><legend>Payment method</legend>
+        <label class="payment-choice"><input type="radio" name="payment_method" value="cod" checked><span>Cash on delivery</span></label>
+      </fieldset>
+      <div class="checkout-total"><span>Order total</span><strong id="checkout-total">₱0.00</strong></div>
+      <p class="cart-error" id="checkout-error" role="alert"></p>
+      <button class="cart-checkout" id="place-order" type="submit">Place order</button>
+    </form>
+    <div class="order-complete" id="order-complete" hidden>
+      <span class="complete-mark" aria-hidden="true">✓</span>
+      <p class="cart-eyebrow">ORDER RECEIVED</p>
+      <h3>Thank you for your order</h3>
+      <p id="order-complete-message"></p>
+      <button class="cart-checkout" type="button" id="complete-done">Continue shopping</button>
+    </div>
+  </section>
+</div>
+
+<!-------- footer -------->
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="images/quazar-wordmark.png" alt="QuazarTech" width="125" class="logo-img">
+        <p>Premium tech gear built for your routine. Free shipping on orders over ₱2,000.</p>
+        <form class="newsletter" id="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <small class="newsletter-msg" id="newsletter-msg"></small>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#products" data-shop="all">All Products</a></li>
+          <li><a href="#products" data-shop="earbuds">Earbuds</a></li>
+          <li><a href="#products" data-shop="speakers">Speakers</a></li>
+          <li><a href="#products" data-shop="keyboards">Keyboards</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Customer Service</h5>
+        <ul>
+          <li><a href="#" data-info="contact">Contact Us</a></li>
+          <li><a href="#" data-info="shipping">Shipping Information</a></li>
+          <li><a href="#" data-info="returns">Returns &amp; Refunds</a></li>
+          <li><a href="#" data-info="warranty">Warranty</a></li>
+          <li><a href="#" data-info="faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#" data-info="about">About Us</a></li>
+          <li><a href="#" data-info="careers">Careers</a></li>
+          <li><a href="#" data-info="privacy">Privacy Policy</a></li>
+          <li><a href="#" data-info="terms">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul class="contact">
+          <li>Cainta, Philippines</li>
+          <li><a href="mailto:support@quazartech.com">support@quazartech.com</a></li>
+          <li><a href="tel:+639000000000">+63 900 000 0000</a></li>
+          <li>Mon - Sat, 9am - 6pm</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 QuazarTech. All rights reserved.</p>
+      <small>Postal code data from <a href="https://www.geonames.org/" target="_blank" rel="noopener">GeoNames</a> (CC BY 4.0).</small>
+      <div class="socials">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+      </div>
+      <div class="payments">
+        <span>VISA</span><span>Mastercard</span><span>Maya</span><span>COD</span>
+      </div>
+    </div>
+  </footer>
+<script src="script.js?v=orders-riders-v2"></script>
+
+</body>
+</html>
